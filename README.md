@@ -17,16 +17,7 @@ Before We Begin:
     Login into mysql container:
     docker exec -it docker-mysql bash;
     
-   This mysql 8 does not allow root login with password.so run below command to login into mysql .
-   
-   mysql
-   
-   ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
-   FLUSH PRIVILEGES;
-   CREATE DATABASE book_manager;
-   exit
-   
-   Try again login mysql by root with password :
+ 
    mysql -u root -p
    -------------------------------------------------------------------
    Import mysql script from the project folder to mysql container:
@@ -37,7 +28,7 @@ Build the project using Gradle from the local machine:
 
 gradle build
 
-Check whether the jar file springbootdockercompose-1.0-SNAPSHOT.jar is generated on the projectfolder/build/libs/
+Check whether the jar file  is generated on the projectfolder/build/libs/
 
 Create Docker file for java 8 with snapshot jar from the machine:
 
@@ -48,6 +39,15 @@ COPY /build/libs/book-manager-1.0-SNAPSHOT.jar book-manager-1.0-SNAPSHOT.jar
 ENTRYPOINT ["java","-jar","book-manager-1.0-SNAPSHOT.jar"]
 
 Build docker image from this Dockerfile
+docker build -f Dockerfile -t book_manager_app .
+
+run app container with mysql :
+
+docker run -t --link docker-mysql:mysql -p 10222:10222 --name spring_boot book_manager_app
+
+check th application running on 
+
+http://localhost:10222/book
 
 
 
