@@ -34,3 +34,22 @@ Before We Begin:
     docker exec -i docker-mysql mysql -uroot -proot book_manager < ~/springbootdockercompose/sql/book_manager.sql
 
 Build the project using Gradle from the local machine:
+
+gradle build
+
+Check whether the jar file springbootdockercompose-1.0-SNAPSHOT.jar is generated on the projectfolder/build/libs/
+
+Create Docker file for java 8 with snapshot jar from the machine:
+
+FROM java:8
+VOLUME /home/docker/spring_boot1 
+EXPOSE 10222
+COPY /build/libs/book-manager-1.0-SNAPSHOT.jar book-manager-1.0-SNAPSHOT.jar 
+ENTRYPOINT ["java","-jar","book-manager-1.0-SNAPSHOT.jar"]
+
+Build docker image from this Dockerfile
+
+
+
+
+
