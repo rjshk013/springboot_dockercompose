@@ -35,7 +35,7 @@ Create Docker file for java 8 with snapshot jar from the machine:
 FROM java:8
 VOLUME /home/docker/spring_boot1 
 EXPOSE 10222
-COPY /build/libs/book-manager-1.0-SNAPSHOT.jar book-manager-1.0-SNAPSHOT.jar 
+COPY ./build/libs/book-manager-1.0-SNAPSHOT.jar book-manager-1.0-SNAPSHOT.jar 
 ENTRYPOINT ["java","-jar","book-manager-1.0-SNAPSHOT.jar"]
 
 Build docker image from this Dockerfile
@@ -54,7 +54,7 @@ If you are using docker-compose:
 --------------------------------
 Clone the repo
 build the project using gradele build
-Depending on the folder your application jar file name will change
+Depending on the folder your application jar file name will change .In this case it will be  "springboot_dockercompose-1.0-SNAPSHOT.jar"
 
 Run the docker compose : docker-compose up
 
