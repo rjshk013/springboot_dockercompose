@@ -50,6 +50,19 @@ check th application running on
 http://localhost:10222/book
 
 
+If you are using docker-compose:
+--------------------------------
+Clone the repo
+build the project using gradele build
+Depending on the folder your application jar file name will change
+
+Run the docker compose : docker-compose up
+
+
+
+
+
+
 
 
 
